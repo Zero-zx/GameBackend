@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Test</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script> <!-- Add Socket.IO client -->
+</head>
+<body>
+    <h1>Socket.IO Test</h1>
+    <p id="status">Connecting...</p>
+
+    <script>
+        // Connect to your Socket.IO server
+        const socket = io('http://localhost:3000');  // Use the correct URL and port of your server
+
+        // Event when connected to the server
+        socket.on('connect', () => {
+            document.getElementById('status').innerText = 'Connected to server';
+            console.log('Successfully connected to Socket.IO server!');
+        });
+
+        // Event when disconnected from the server
+        socket.on('disconnect', () => {
+            document.getElementById('status').innerText = 'Disconnected';
+            console.log('Disconnected from Socket.IO server');
+        });
+    </script>
+</body>
+</html>
